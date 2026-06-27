@@ -18,8 +18,8 @@ function AdminNavbar() {
           Home
         </Link>
 
-        <Link className="nav-link" to="/admin/questions">
-          Manage Questions
+        <Link className="nav-link" to="/admin/quizzes">
+          Manage Quizzes
         </Link>
 
         <Link className="nav-link" to="/admin/articles">

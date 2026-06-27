@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-import Quiz from "./pages/Quiz";
-import ManageQuestions from "./pages/ManageQuestions";
 import AdminHome from "./pages/AdminHome";
+import ManageQuizzes from "./pages/ManageQuizzes";
+import QuizList from "./pages/QuizList";
+import QuizDetail from "./pages/QuizDetail";
+
 function App() {
   const { user } = useSelector((state) => state.auth);
 
@@ -21,8 +23,13 @@ function App() {
       />
 
       <Route
-        path="/dashboard/quiz"
-        element={user ? <Quiz /> : <Navigate to="/login" />}
+        path="/dashboard/quizzes"
+        element={user ? <QuizList /> : <Navigate to="/login" />}
+      />
+
+      <Route
+        path="/dashboard/quizzes/:id"
+        element={user ? <QuizDetail /> : <Navigate to="/login" />}
       />
 
       <Route
@@ -31,8 +38,8 @@ function App() {
       />
 
       <Route
-        path="/admin/questions"
-        element={user?.isAdmin ? <ManageQuestions /> : <Navigate to="/login" />}
+        path="/admin/quizzes"
+        element={user?.isAdmin ? <ManageQuizzes /> : <Navigate to="/login" />}
       />
     </Routes>
   );

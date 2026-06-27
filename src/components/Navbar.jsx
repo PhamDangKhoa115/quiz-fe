@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../features/authSlice";
 
-function Navbar({ isAdmin = false }) {
+function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,21 +14,16 @@ function Navbar({ isAdmin = false }) {
   return (
     <nav className="navbar navbar-expand-lg bg-light mb-4">
       <div className="container">
-        <Link className="navbar-brand" to={isAdmin ? "/admin" : "/dashboard"}>
+        <Link className="navbar-brand" to="/dashboard">
           Home
         </Link>
 
         <div className="navbar-nav">
-          {!isAdmin && (
-            <>
-              <Link className="nav-link" to="/dashboard/quiz">
-                Quiz
-              </Link>
-              <span className="nav-link">Article</span>
-            </>
-          )}
+          <Link className="nav-link" to="/dashboard/quizzes">
+            Quiz
+          </Link>
 
-          {isAdmin && <span className="nav-link">Manage Questions</span>}
+          <span className="nav-link">Article</span>
 
           <button className="btn btn-link nav-link" onClick={handleLogout}>
             Logout
