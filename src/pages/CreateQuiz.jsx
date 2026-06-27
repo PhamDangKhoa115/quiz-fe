@@ -57,6 +57,8 @@ function CreateQuiz() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("FORM DATA:", form);
+
     if (form.questions.length === 0) {
       alert("Please add at least one question");
       return;
@@ -64,8 +66,12 @@ function CreateQuiz() {
 
     const result = await dispatch(createQuiz(form));
 
+    console.log("CREATE RESULT:", result);
+
     if (createQuiz.fulfilled.match(result)) {
       navigate("/admin/quizzes");
+    } else {
+      alert(result.payload || "Create quiz failed");
     }
   };
 

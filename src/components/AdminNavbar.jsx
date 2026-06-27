@@ -22,10 +22,6 @@ function AdminNavbar() {
           Manage Quizzes
         </Link>
 
-        <Link className="nav-link" to="/admin/articles">
-          Manage Articles
-        </Link>
-
         <button className="btn btn-link nav-link" onClick={handleLogout}>
           Logout
         </button>
