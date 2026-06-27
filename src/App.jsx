@@ -8,6 +8,8 @@ import ManageQuizzes from "./pages/ManageQuizzes";
 import QuizList from "./pages/QuizList";
 import QuizDetail from "./pages/QuizDetail";
 
+import CreateQuiz from "./pages/CreateQuiz";
+import EditQuiz from "./pages/EditQuiz";
 function App() {
   const { user } = useSelector((state) => state.auth);
 
@@ -40,6 +42,16 @@ function App() {
       <Route
         path="/admin/quizzes"
         element={user?.isAdmin ? <ManageQuizzes /> : <Navigate to="/login" />}
+      />
+
+      <Route
+        path="/admin/quizzes/create"
+        element={user?.isAdmin ? <CreateQuiz /> : <Navigate to="/login" />}
+      />
+
+      <Route
+        path="/admin/quizzes/edit/:id"
+        element={user?.isAdmin ? <EditQuiz /> : <Navigate to="/login" />}
       />
     </Routes>
   );
